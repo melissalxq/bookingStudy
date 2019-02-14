@@ -22,7 +22,7 @@
 
 				<q-item-main > 
 				    <q-item-tile label>{{n.name}}</q-item-tile>
-                		<q-item-tile label>{{n.discri}}{{n.stars}}</q-item-tile>
+                		<q-item-tile label>{{n.discri}}</q-item-tile>
                 		<q-item-side right>
 							<span class="text-amber">
 								<q-item-tile icon="star" v-for="x in n.stars" :key="x" /> 
@@ -79,7 +79,7 @@ export default {
 			value = value.toLowerCase()
 			// this.filterTeachers = teachers.filter(teacher => teacher.name.indexOf(value) >= 0)
 			this.filterTeachers = this.teachers.filter(function(teacher) { 
-				return teacher.name.toLowerCase().indexOf(value) >= 0 
+				return (teacher.name + ' ' + teacher.discri).toLowerCase().indexOf(value) >= 0 
 			})
 		}
 	},
