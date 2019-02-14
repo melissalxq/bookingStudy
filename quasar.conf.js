@@ -60,7 +60,12 @@ module.exports = function (ctx) {
         'QField',
         'QDatetime',
         'QBtnDropdown',
-        'QItemTile'
+        'QItemTile',
+        'QSelect',
+        'QPopover',
+        'QChip',
+        'QItemSeparator',
+        'QSearch'
        
       ],
       directives: [
@@ -70,7 +75,7 @@ module.exports = function (ctx) {
       // Quasar plugins
       plugins: [
         'Notify',
-       
+        'Dialog',
        
       ],
 

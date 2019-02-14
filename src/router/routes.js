@@ -20,7 +20,14 @@ const routes = [
 				path:'booking',
 				component:() => import('pages/booking.vue'),
 			
+			},
+				//profile page
+			{ 
+				path:'teacher',//here it is ,route/user/profile 
+				name:'profile',
+				component:Profile,         //we reference /src/pages/Profile.vue imported above 
 			}
+
 		]
 	},
 
@@ -30,15 +37,15 @@ const routes = [
 		component: User,
 		
 
-		children: [
+		// children: [
 			 
-			//profile page
-			{ 
-				path:'profile',//here it is ,route/user/profile 
-				name:'profile',
-				component:Profile,         //we reference /src/pages/Profile.vue imported above 
-			}
-		]
+		// 	//profile page
+		// 	{ 
+		// 		path:'profile',//here it is ,route/user/profile 
+		// 		name:'profile',
+		// 		component:Profile,         //we reference /src/pages/Profile.vue imported above 
+		// 	}
+		// ]
 	}
 ]
 
