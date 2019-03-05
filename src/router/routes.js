@@ -9,10 +9,16 @@ const routes = [
 		path: '/',
 		component: () => import('layouts/MyLayout.vue'),
 		children: [
-			// index page
+			// index loging page
 			{ 
 				path: '', 
 				component: () => import('pages/Index.vue')
+		 
+			},
+			// register page
+			{ 
+				path: 'register', 
+				component: () => import('pages/Register.vue')
 		 
 			},
 			//booking page

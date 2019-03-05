@@ -29,7 +29,7 @@
 
 			<q-btn color="orange" @click="submit" class="full-width">Login</q-btn>
 			<p></p>
-			<p align="center">No account?<a href="https://www.w3schools.com" >Register</a></p>
+			<p align="center">No account?<a href="/#/Register" >Register</a></p>
 		</div>
 	
 	</q-page>

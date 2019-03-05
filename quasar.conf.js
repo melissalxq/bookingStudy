@@ -65,7 +65,8 @@ module.exports = function (ctx) {
         'QPopover',
         'QChip',
         'QItemSeparator',
-        'QSearch'
+        'QSearch',
+        'QCheckbox'
        
       ],
       directives: [
