@@ -7,12 +7,26 @@ const routes = [
 	{
 		//default loading page
 		path: '/',
-		component: () => import('layouts/MyLayout.vue'),
+		component: () => import('layouts/HomeLayout.vue'),
 		children: [
-			// index loging page
+			// index Home page
 			{ 
 				path: '', 
 				component: () => import('pages/Index.vue')
+		 
+			},
+		]
+
+	},
+	{
+		//parent layout
+		path: '/user',
+		component: () => import('layouts/MyLayout.vue'),
+		children: [
+			// user,parent login page
+			{ 
+				path: 'login', 
+				component: () => import('pages/userlogin.vue')
 		 
 			},
 			// register page
