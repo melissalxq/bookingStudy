@@ -15,7 +15,7 @@
 			]"></q-input>
 			<q-input
 				class="bg-amber-2 q-mb-sm q-pa-sm round-borders"
-				v-model="signUpform.LastName"	
+				v-model="signUpform.lastName"	
 				placeholder="Last Name" 
 				:before="[
 					{
@@ -76,7 +76,7 @@ import {required, email } from 'vuelidate/lib/validators'
 import {QInput} from 'quasar'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-Vue.use(VueRouter)
+import utils from 'src/common/utils.js'
 
 export default {
   // name: 'signUp Page',
@@ -114,21 +114,21 @@ export default {
 	},
 
 	created() {
-		this.saveTable('users', this.users)
-		this.users = this.getTable('users')
+		utils.saveTable('users', this.users)
+		this.users = utils.getTable('users')
 		console.log(this.users, this.users)
 	},
 	
 	methods:{
 
-			getTable(table) {
-				let rows = localStorage.getItem(table)
-				return rows ? JSON.parse(rows) : []
-			},
-			saveTable(table, rows) {
-				rows = rows || this[table]
-				localStorage.setItem(table, JSON.stringify(rows))
-			},
+			// getTable(table) {
+			// 	let rows = localStorage.getItem(table)
+			// 	return rows ? JSON.parse(rows) : []
+			// },
+			// saveTable(table, rows) {
+			// 	rows = rows || this[table]
+			// 	localStorage.setItem(table, JSON.stringify(rows))
+			// },
 
 		//Check if the email already exist?
 			checkEmail(){
@@ -209,7 +209,7 @@ export default {
 			},
 			
 		signUp(){
-			console.log(this.form.email)
+		
 			this.$v.signUpform.$touch()
 			
 			if(this.$v.signUpform.$error) 
@@ -218,29 +218,34 @@ export default {
 			} 
 			else 
 			{
-			//  get new user object from from input
-				var userfirstName=signUpform.firstName;
-			
-			
-
-			// submit button funciton save all the fields to to database.
-
+			//submit button funciton save all the fields to to database.
+				var userfirstName=this.signUpform.firstName
+				let record = {
+				firstName: this.signUpform.firstName,
+				lastName: this.signUpform.lastName,
+				email:this.signUpform.email,
+				}
+			this.users.push(record)
+			utils.saveTable('users', this.users)
+			// utils.saveTable('bookings',days)
+			console.log(this.users)
+			}
+				
 			// save successful or not
 
-			//  
-				this.$q.notify({
-					message:'you are logined',
+			this.$q.notify({
+					message:'Registered successful!',
 					color:'positive',
-		 
+		
 				})
-			this.$router.push({ name: 'profile' })
-	 
-			}
+				// after register, go xxx page
+				this.$router.push({ name: 'profile' })
+	 		}
 	 
 			
 		}
 	}
-}
+
 
 </script>
 

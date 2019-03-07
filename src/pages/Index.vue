@@ -2,15 +2,18 @@
 	<q-page class="flex flex-center">
 		<div >
 			<img alt="Chattykids logo" src="~assets/CK_CN.png" width="400" class="q-mb-lg">
-			<q-btn color="orange" to="/user/login" class="full-width">I am a parent</q-btn>
+			<q-btn class="homeButon full-width" color="orange" to="/user/login" >I am a parent</q-btn>
 			<p></p>
-			<q-btn color="blue" to="/user/login" class="full-width">I am a teacher</q-btn>
+			<q-btn class="homeButon full-width" color="blue" to="/user/login" >I am a teacher</q-btn>
 		</div>
 	
 	</q-page>
 </template>
 
 <style>
+	.homeButon {
+		height: 50px;
+	}
 </style>
 
 
