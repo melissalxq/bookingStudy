@@ -4,8 +4,6 @@ utils.getTable = (table) => {
     return rows ? JSON.parse(rows) : []
 }
 
-utils.saveTable = (table, rows) => {    
-    localStorage.setItem(table, JSON.stringify(rows))
-}
+utils.saveTable = (table, rows) => localStorage.setItem(table, JSON.stringify(rows))
 
 export default utils

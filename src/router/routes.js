@@ -1,4 +1,4 @@
-import User from 'layouts/User'
+import User from 'layouts/UserLayout'
 import Profile from 'pages/Profile'
 import Posts from 'pages/Posts'
 
@@ -52,20 +52,20 @@ const routes = [
 	},
 
 	{
-			path: '/teacher',   
+		//teacher layout
+		path: '/teacher',   
+		// component: () => import('layouts/MyLayout.vue'),
 		// we use /src/layouts/User component which is imported above
 		component: User,
 		
-
-		// children: [
+		children: [
 			 
-		// 	//profile page
-		// 	{ 
-		// 		path:'profile',//here it is ,route/user/profile 
-		// 		name:'profile',
-		// 		component:Profile,         //we reference /src/pages/Profile.vue imported above 
-		// 	}
-		// ]
+			//teacher profile page
+			{ 
+				path:'myprofileTeacher',//here it is ,route/user/profile 
+				component:() => import('pages/teacherProfile.vue'),        //we reference /src/pages/teacherProfile.vue imported above 
+			}
+		]
 	}
 ]
 

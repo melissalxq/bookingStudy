@@ -4,16 +4,14 @@
     <!-- (Optional) The Header -->
     <q-layout-header>
       <q-toolbar>
-        <!-- <q-btn
-          flat
-          round
-          dense
-          icon="menu"
-          @click="leftDrawer = !leftDrawer"
-        /> -->
-        <q-toolbar-title>
-          Review Teacher
-          <span slot="subtitle">Review Teacher</span>
+         <q-toolbar-title class="hometitle">
+			 <div>
+				<img alt="Chattykids logo" src="~assets/LogoChattyKids.jpg" width="250" height="50">
+				<div></div>
+				Booking System
+				<!-- <div slot="subtitle">Booking a Tutoring session v{{ $q.version }}</div> -->
+				</div>
+         
         </q-toolbar-title>
       </q-toolbar>
         </q-layout-header>
@@ -52,6 +50,7 @@
 
 <script>
 import { QScrollArea } from 'quasar'
+import utils from 'src/common/utils.js'
 
 export default {
   components: {QScrollArea},

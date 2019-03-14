@@ -68,9 +68,9 @@
 
 		<q-layout-footer  >
 			<q-tabs v-model="selectedTab" color="orange" align="center">
-				<q-route-tab slot="title" name="tab-0" icon="home" label="Home" to="/user/login"/>
+				<!-- <q-route-tab slot="title" name="tab-0" icon="home" label="Home" to="/user/login"/> -->
 				<q-route-tab slot="title" name="tab-1" icon="today" label="booking" to="/user/booking" />
-				<q-route-tab slot="title" name="tab-2" icon="school" label="Teachers" to="/teacher"/>
+				<q-route-tab slot="title" name="tab-2" icon="school" label="Teachers" to="/user/teacher"/>
 				<q-tab slot="title" name="tab-3" icon="assignment_turned_in" label="My Sessions"/>
 			</q-tabs>
 		</q-layout-footer>
