@@ -224,6 +224,7 @@ export default {
 				firstName: this.signUpform.firstName,
 				lastName: this.signUpform.lastName,
 				email:this.signUpform.email,
+				password:this.signUpform.password2
 				}
 			this.users.push(record)
 			utils.saveTable('users', this.users)
@@ -232,14 +233,16 @@ export default {
 			}
 				
 			// save successful or not
-
-			this.$q.notify({
-					message:'Registered successful!',
+				this.$q.dialog({
+					title:"Registion Confirm",
+					message:'You are registered sucessfull! Please go to login page to login our system.',
 					color:'positive',
-		
+					ok:true,
 				})
-				// after register, go xxx page
-				this.$router.push({ name: 'profile' })
+
+						// after register, go xxx page
+			
+				this.$router.push('/user/login')
 	 		}
 	 
 			

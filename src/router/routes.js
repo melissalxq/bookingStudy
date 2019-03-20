@@ -1,6 +1,7 @@
 import User from 'layouts/UserLayout'
 import Profile from 'pages/Profile'
-import Posts from 'pages/Posts'
+import userLogin from 'src/pages/userLogin'
+import Posts from 'src/pages/Posts'
 
 // import Posts from 'pages/Posts'
 const routes = [
@@ -15,29 +16,31 @@ const routes = [
 				component: () => import('pages/Index.vue')
 		 
 			},
+			{ 
+				// user login/register
+				path: '/user/login', 
+				
+				component: userLogin
+		 
+			},
+			// register page
+			{ 
+				path: 'user/register', 
+				component: () => import('pages/Register.vue')
+		 
+			},
 		]
 
 	},
 	{
 		//parent layout
-		path: '/user',
+		path: '/student',
 		component: () => import('layouts/MyLayout.vue'),
 		children: [
-			// user,parent login page
-			{ 
-				path: 'login', 
-				component: () => import('pages/userlogin.vue')
-		 
-			},
-			// register page
-			{ 
-				path: 'register', 
-				component: () => import('pages/Register.vue')
-		 
-			},
 			//booking page
 			{
 				path:'booking',
+				component: () => import('layouts/MyLayout.vue'),
 				component:() => import('pages/booking.vue'),
 			
 			},

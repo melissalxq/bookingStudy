@@ -44,8 +44,9 @@ import {required, email } from 'vuelidate/lib/validators'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
+import utils from 'src/common/utils.js'
+import {QInput} from 'quasar'
 
-import {QInput} from 'quasar';
 export default {
 	name: 'userLogin',
 	components:{
@@ -55,8 +56,8 @@ export default {
 	data(){
 		return {
 			form:{
-				email:''
-			//   password:''
+				email:'',
+			   password:''
 			}
 			
 		}
@@ -68,31 +69,46 @@ export default {
 		}
 	},
 
+	created() {
+		//utils.saveTable('users', this.users) 
+		this.users = utils.getTable('users') 
+		console.log(this.users, this.users)
+	},
 
 	methods:{
 		submit(){
-			console.log(this.form.email)
-			this.$v.form.$touch()
-			
-			if(this.$v.form.$error) 
-			{
-				alert('Please review fields again.') 
-			} 
-			else 
-			{
-			 
-				this.$q.notify({
-					message:'you are logined',
-					color:'positive',
-		 
-				})
-			this.$router.push({ name: 'profile' })
-	 
+				console.log(this.form.email)
+				this.$v.form.$touch()
+				
+				if(this.$v.form.$error) 
+				{
+					alert('Please review fields again.') 
+				} 
+				else 
+				{
+				//check the useranme in the database
+					this.users = utils.getTable('users') 
+				for (let i=0; i<this.users.length;i++){
+					if(this.users.email==this.form.emai && this.users.password==this.form.password){
+						//if the username and password match the databse
+						this.$q.notify({
+						message:'you are logined',
+						color:'positive',
+						})
+						//go to the profile page
+						this.$router.push({ name: 'profile' })
+						return
+						}
+					}
+					// username and password does not match the database
+					this.form.email=""
+					this.$refs.email.focus()
+					this.form.password=""
+					return
+				}
 			}
-	 
-			
-		}
+	 	}
 	}
-}
+
 
 </script>
