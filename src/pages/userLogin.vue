@@ -4,6 +4,7 @@
 			<img alt="Chattykids logo" src="~assets/CK_CN.png" width="400" class="q-mb-lg">
 			<q-input
 				class="bg-amber-2 q-mb-sm q-pa-sm round-borders"
+				ref="email"
 				v-model="form.email"
 				placeholder="User Name"
 				@blur="$v.form.email.$touch"
@@ -31,11 +32,41 @@
 			<p></p>
 			<p align="center">No account?<a href="/#/user/Register" >Register</a></p>
 		</div>
-	
+		<q-modal v-model="opened" minimized >
+			<q-modal-layout>
+				<q-toolbar   color="red" slot="header" >
+					<q-btn
+						flat
+						round
+						dense
+						v-close-overlay
+						icon="warning"
+					/>
+					<q-toolbar-title>
+						Alert
+					</q-toolbar-title>
+				</q-toolbar>
+				
+				<div class="alertModal">
+					<p>Your username and password do not match our system, please review it!</p>
+					<div  class="float-right"> 
+
+						<q-btn
+							color="negative"
+							v-close-overlay
+							label="Close"
+						/>
+					</div>
+				</div>
+			</q-modal-layout>
+ 		 </q-modal>
 	</q-page>
 </template>
 
 <style>
+	.alertModal{
+		padding:20px;
+	}
 </style>
 
 
@@ -58,8 +89,9 @@ export default {
 			form:{
 				email:'',
 			   password:''
-			}
-			
+			},
+			users: [],
+			opened: false
 		}
 	},
 	validations:{
@@ -77,38 +109,40 @@ export default {
 
 	methods:{
 		submit(){
-				console.log(this.form.email)
-				this.$v.form.$touch()
-				
-				if(this.$v.form.$error) 
-				{
-					alert('Please review fields again.') 
-				} 
-				else 
-				{
+			
+			this.$v.form.$touch()
+			
+			if(this.$v.form.$error) 
+			{
+				alert('Please review fields again.') 
+			} 
+			else 
+			{
 				//check the useranme in the database
-					this.users = utils.getTable('users') 
+	
 				for (let i=0; i<this.users.length;i++){
-					if(this.users.email==this.form.emai && this.users.password==this.form.password){
+						console.log(this.users[i].email)
+					if(this.users[i].email==this.form.email && this.users[i].password==this.form.password){
 						//if the username and password match the databse
 						this.$q.notify({
-						message:'you are logined',
-						color:'positive',
+							message:'you are logined',
+							color:'positive',
 						})
 						//go to the profile page
 						this.$router.push({ name: 'profile' })
 						return
-						}
 					}
-					// username and password does not match the database
-					this.form.email=""
-					this.$refs.email.focus()
-					this.form.password=""
-					return
 				}
+				// username and password does not match the database
+				this.opened=true
+				this.form.email=""
+				this.$refs.email.focus()
+				this.form.password=""
+				return
 			}
-	 	}
+		}
 	}
+}
 
 
 </script>

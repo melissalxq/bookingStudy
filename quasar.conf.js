@@ -66,7 +66,9 @@ module.exports = function (ctx) {
         'QChip',
         'QItemSeparator',
         'QSearch',
-        'QCheckbox'
+        'QCheckbox',
+        'QModal',
+        'QModalLayout'
        
       ],
       directives: [
