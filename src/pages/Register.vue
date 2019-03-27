@@ -114,7 +114,6 @@ export default {
 	},
 
 	created() {
-		utils.saveTable('users', this.users)
 		this.users = utils.getTable('users')
 		console.log(this.users, this.users)
 	},
@@ -215,6 +214,7 @@ export default {
 			if(this.$v.signUpform.$error) 
 			{
 				alert('Please review fields again.') 
+				return
 			} 
 			else 
 			{

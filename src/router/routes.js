@@ -1,5 +1,5 @@
 import User from 'layouts/UserLayout'
-import Profile from 'pages/Profile'
+import findTeachers from 'pages/FindTeachers'
 import userLogin from 'src/pages/userLogin'
 import Posts from 'src/pages/Posts'
 
@@ -44,11 +44,11 @@ const routes = [
 				component:() => import('pages/booking.vue'),
 			
 			},
-				//profile page
+				//search teacher page
 			{ 
-				path:'teacher',//here it is ,route/user/profile 
-				name:'profile',
-				component:Profile,         //we reference /src/pages/Profile.vue imported above 
+				path:'searchTeachers',//here it is ,route/student/search testcher
+				name:'FindTeachers',
+				component:findTeachers,         //we reference /src/pages/FindTeachers.vue imported above 
 			}
 
 		]

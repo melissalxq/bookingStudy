@@ -38,7 +38,7 @@
      <q-layout-footer  >
         <q-tabs v-model="selectedTab" align="center">
           <q-route-tab slot="title" name="tab-0" icon="home" label="Home" to="/"/>
-          <q-route-tab slot="title" name="tab-1" icon="today" label="My Time" to="/booking" />
+          <q-route-tab slot="title" name="tab-1" icon="today" label="My Time" to="/student/booking" />
           <q-route-tab slot="title" name="tab-2" icon="school" label="My profile" to="/teacher/profile"/>
           <q-tab slot="title" name="tab-3" icon="assignment_turned_in" label="My booking"/>
       

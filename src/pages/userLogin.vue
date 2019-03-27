@@ -41,6 +41,7 @@
 						dense
 						v-close-overlay
 						icon="warning"
+						
 					/>
 					<q-toolbar-title>
 						Alert
@@ -49,24 +50,26 @@
 				
 				<div class="alertModal">
 					<p>Your username and password do not match our system, please review it!</p>
-					<div  class="float-right"> 
-
-						<q-btn
+						<q-btn class="float-right alertButton"
 							color="negative"
 							v-close-overlay
 							label="Close"
+							@click="closeButton"
 						/>
-					</div>
 				</div>
 			</q-modal-layout>
  		 </q-modal>
 	</q-page>
 </template>
 
-<style>
+<style scoped>
 	.alertModal{
 		padding:20px;
 	}
+	.alertButton{
+		margin:20px;
+	}
+
 </style>
 
 
@@ -87,8 +90,8 @@ export default {
 	data(){
 		return {
 			form:{
-				email:'',
-			   password:''
+				email:'1@test.com',
+				password:'1'
 			},
 			users: [],
 			opened: false
@@ -128,18 +131,23 @@ export default {
 							message:'you are logined',
 							color:'positive',
 						})
-						//go to the profile page
-						this.$router.push({ name: 'profile' })
+						//go to the Find teacher page
+						this.$router.push({ name: 'FindTeachers' })
 						return
 					}
 				}
 				// username and password does not match the database
 				this.opened=true
-				this.form.email=""
-				this.$refs.email.focus()
-				this.form.password=""
+				
 				return
 			}
+		},
+
+		closeButton(){
+			this.opened=false;
+			this.form.email=""
+			this.$refs.email.focus()
+			this.form.password=""
 		}
 	}
 }
